@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MVC_HomeWork.Models.ViewModels.MoneyViewModel>
+
+@{
+    Layout = null;
+    var i = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(m=>m.Category)</th>
+                <th>@Html.DisplayNameFor(m=>m.Date)</th>
+                <th>@Html.DisplayNameFor(m=>m.Amount)</th>
+            </tr>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>@(++i)</td>
+                    <td>@(data.Category)</td>
+                    <td>@(data.Date.ToString("yyyy-MM-dd"))</td>
+                    <td>@(data.Amount.ToString("N0"))</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
