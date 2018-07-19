@@ -8,8 +8,8 @@ namespace MVC_HomeWork.Models.ViewModels
 {
     public enum CategoryEnum
     {
-        收入 = 'I',
-        支出 = 'E'
+        收入 = 1,
+        支出 = 2
     }
 
     public class MoneyViewModel
