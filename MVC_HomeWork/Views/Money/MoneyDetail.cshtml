@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MVC_HomeWork.Models.ViewModels.MoneyViewModel>
+﻿@using MVC_HomeWork.Extensions
+@using MVC_HomeWork.Models.ViewModels
+@model IEnumerable<MVC_HomeWork.Models.ViewModels.MoneyViewModel>
 
 @{
     Layout = null;
@@ -10,18 +12,24 @@
         <table class="table table-bordered table-hover">
             <tr>
                 <th>#</th>
-                <th>@Html.DisplayNameFor(m=>m.Category)</th>
-                <th>@Html.DisplayNameFor(m=>m.Date)</th>
-                <th>@Html.DisplayNameFor(m=>m.Amount)</th>
+                <th>@Html.DisplayNameFor(m => m.Category)</th>
+                <th>@Html.DisplayNameFor(m => m.Date)</th>
+                <th>@Html.DisplayNameFor(m => m.Amount)</th>
+                @*<th>@Html.DisplayNameFor(m => m.Description)</th>*@
             </tr>
-            @foreach (var data in Model)
+            @foreach (var item in Model)
             {
-                <tr>
-                    <td>@(++i)</td>
-                    <td>@(data.Category)</td>
-                    <td>@(data.Date.ToString("yyyy-MM-dd"))</td>
-                    <td>@(data.Amount.ToString("N0"))</td>
-                </tr>
+                var category = item.Category.GetDisplayName();
+
+                var rowColor = (category == CategoryEnum.收入.GetDisplayName() ? "blue" : "red");
+
+            <tr style="color:@rowColor">
+                <td>@(++i)</td>
+                <td>@(category)</td>
+                <td>@Html.DisplayFor(x => item.Date)</td>
+                <td>@Html.DisplayFor(x => item.Amount)</td>
+                @*<td>@Html.DisplayFor(x => item.Description)</td>*@
+            </tr>
             }
         </table>
     </div>

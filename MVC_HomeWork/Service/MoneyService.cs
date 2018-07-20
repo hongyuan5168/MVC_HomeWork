@@ -24,7 +24,8 @@ namespace MVC_HomeWork.Service
             {
                 Category = m.Categoryyy == 0 ? CategoryEnum.收入: CategoryEnum.支出,
                 Date = m.Dateee,
-                Amount = m.Amounttt
+                Amount = m.Amounttt,
+                Description = m.Remarkkk
             });
             return result;
         }
